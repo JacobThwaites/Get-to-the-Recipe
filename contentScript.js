@@ -24,7 +24,6 @@ const classesToCheck = [
   // Communicate with the background script using messaging
   chrome.runtime.sendMessage({ checkClass: true, test: 'qwer' }, (response) => {
     for (const recipeClass of classesToCheck) {
-        console.log(recipeClass);
         if (doesClassExist(recipeClass)) {
           scrollToClass(recipeClass);
           chrome.runtime.sendMessage({ classExists: true });
