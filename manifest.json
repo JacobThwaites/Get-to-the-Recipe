@@ -1,0 +1,20 @@
+{
+    "manifest_version": 3,
+    "name": "Get to the Recipe!",
+    "version": "1.0",
+    "description": "Skip past all the waffle and get to the actual recipe on a website",
+    "permissions": ["activeTab"],
+    "background": {
+      "service_worker": "background.js"
+    },
+    "action": {
+      "default_popup": "index.html"
+    },
+    "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "js": ["contentScript.js"],
+        "run_at": "document_end"
+      }
+    ]
+  }
