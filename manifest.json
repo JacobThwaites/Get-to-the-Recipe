@@ -10,5 +10,10 @@
         "js": ["contentScript.js"],
         "run_at": "document_end"
       }
-    ]
+    ],
+    "icons": {
+      "48": "./logo.png",
+      "96": "./logo.png",
+      "128": "./logo.png"
+    }
   }
