@@ -1,12 +1,5 @@
-function doesClassExist(className) {
-    return document.querySelector(`.${className}`) !== null;
-}
-  
-function scrollToClass(className) {
-    const element = document.querySelector(`.${className}`);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+function findElement(className) {
+    return document.querySelector(`.${className}`);
 }
   
 const classesToCheck = [
@@ -21,12 +14,11 @@ const classesToCheck = [
   
   chrome.runtime.sendMessage({}, () => {
     for (const recipeClass of classesToCheck) {
-        if (doesClassExist(recipeClass)) {
-          scrollToClass(recipeClass);
+        const element = findElement(recipeClass)
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
           chrome.runtime.sendMessage({ classExists: true });
           return;
-        } else {
-            chrome.runtime.sendMessage({ classExists: false });
         }
     } 
   });
