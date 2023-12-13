@@ -9,20 +9,17 @@ function scrollToClass(className) {
     }
 }
   
-const classToCheck = 'wprm-recipe-container'; // Replace with the class you want to check
 const classesToCheck = [
     'wprm-recipe-container',
-    'wprm-recipe', // https://therecipecritic.com/croissant-breakfast-casserole/ adds id to the end of regular class - maybe check LIKE
+    'wprm-recipe',
     'tasty-recipes-entry-header',
-    'mv-create-wrapper', // maybe not right,
+    'mv-create-wrapper',
     'easyrecipe',
-    'Recipe', // e.g. https://www.thekitchn.com/one-pot-corn-pasta-recipe-23567076,
-    'recipe-block', // https://www.simplyrecipes.com/skillet-eggplant-parmesan-recipe-7254594
+    'Recipe',
+    'recipe-block',
 ]
   
-
-  // Communicate with the background script using messaging
-  chrome.runtime.sendMessage({ checkClass: true, test: 'qwer' }, (response) => {
+  chrome.runtime.sendMessage({}, () => {
     for (const recipeClass of classesToCheck) {
         if (doesClassExist(recipeClass)) {
           scrollToClass(recipeClass);
